@@ -170,29 +170,29 @@ func normalizeAddr(addr string) string {
 
 // ── Métodos HTTP ──────────────────────────────────────────────────────────────
 
-// Get faz um GET na Docker Engine API v1.54 e retorna o corpo da resposta.
+// Get faz um GET na Docker Engine API v1.54 e retorna o corpo da resposta como string JSON.
 //
 //	data, err := c.Get("/containers/json")
-func (c *Client) Get(path string) ([]byte, error) {
+func (c *Client) Get(path string) (string, error) {
 	req, err := http.NewRequest(http.MethodGet, c.baseURL+"/"+apiVersion+path, nil)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 
 	resp, err := c.http.Do(req)
 	if err != nil {
-		return nil, fmt.Errorf("docker GET %s: %w", path, err)
+		return "", fmt.Errorf("docker GET %s: %w", path, err)
 	}
 	defer resp.Body.Close()
 
 	data, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 	if resp.StatusCode >= 400 {
-		return nil, fmt.Errorf("docker API %d: %s", resp.StatusCode, strings.TrimSpace(string(data)))
+		return "", fmt.Errorf("docker API %d: %s", resp.StatusCode, strings.TrimSpace(string(data)))
 	}
-	return data, nil
+	return string(data), nil
 }
 
 // Post faz um POST na Docker Engine API v1.54 com body JSON opcional.
