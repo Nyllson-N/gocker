@@ -14,7 +14,7 @@
 //
 //	// Conexão com máquina na rede local
 //	c := docker.NewLAN("192.168.1.50")
-package godocker
+package gocker
 
 import (
 	"bytes"
