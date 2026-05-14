@@ -4,7 +4,7 @@
 //
 // # Uso mínimo
 //
-//	import docker "github.com/Nyllson-N/godocker"
+//	import docker "github.com/Nyllson-N/gocker"
 //
 //	// Conexão local (detecta automaticamente Unix socket ou TCP)
 //	c := docker.New()

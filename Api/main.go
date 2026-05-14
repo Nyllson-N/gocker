@@ -2,12 +2,14 @@ package main
 
 import (
 	"fmt"
-	"github.com/Nyllson-N/godocker"
+
+	"github.com/Nyllson-N/gocker"
 )
 
 func main() {
 	// Criar um cliente Docker usando detecção automática
-	client := godocker.New()
+	client := gocker.New()
+	var container := 
 
 	fmt.Println("Cliente Docker criado com sucesso!")
 }
