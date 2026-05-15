@@ -170,7 +170,7 @@ func normalizeAddr(addr string) string {
 
 // ── Métodos HTTP ──────────────────────────────────────────────────────────────
 
-// Get faz um GET na Docker Engine API v1.54 e retorna o corpo da resposta como string JSON.
+// Get faz um GET na Docker Engine API v1.54 e retorna o corpo da resposta.
 //
 //	data, err := c.Get("/containers/json")
 func (c *Client) Get(path string) (string, error) {
